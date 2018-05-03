@@ -39,8 +39,8 @@ public class MemberControllerTest {
     }
 
     @Test
-    public void shouldFetchAllAuthors() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get(MemberController.URI)
+    public void shouldFetchAllMembers() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders.get(MemberController.URI)
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(jsonPath("$", hasSize(2)))
@@ -48,8 +48,8 @@ public class MemberControllerTest {
     }
 
     @Test
-    public void shouldFindAuthorById() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get(MemberController.URI + "2")
+    public void shouldFindMemberById() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders.get(MemberController.URI + "2")
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(jsonPath("$.id").exists())
@@ -62,8 +62,8 @@ public class MemberControllerTest {
     }
 
     @Test
-    public void shouldVerifyInvalidAuthorId() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get(MemberController.URI + "0")
+    public void shouldVerifyInvalidMemberId() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders.get(MemberController.URI + "0")
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isNotFound())
@@ -73,8 +73,8 @@ public class MemberControllerTest {
     }
 
     @Test
-    public void shouldVerifyInvalidAuthorArgument() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get(MemberController.URI + "abc")
+    public void shouldVerifyInvalidMemberArgument() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders.get(MemberController.URI + "abc")
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
@@ -84,8 +84,8 @@ public class MemberControllerTest {
     }
 
     @Test
-    public void shouldSaveAuthor() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.post(MemberController.URI)
+    public void shouldSaveMember() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders.post(MemberController.URI)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"name\": \"Marilyn Monroe\", \"email\": \"mm@music.com\"}")
                 .accept(MediaType.APPLICATION_JSON))
@@ -100,8 +100,8 @@ public class MemberControllerTest {
     }
 
     @Test
-    public void shouldVerifyInvalidSaveAuthor() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.post(MemberController.URI)
+    public void shouldVerifyInvalidSaveMember() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders.post(MemberController.URI)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"name\": \"\", \"email\": \"mm@music.com\"}")
                 .accept(MediaType.APPLICATION_JSON))
@@ -114,8 +114,8 @@ public class MemberControllerTest {
     }
 
     @Test
-    public void shouldUpdateAuthor() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.put(MemberController.URI)
+    public void shouldUpdateMember() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders.put(MemberController.URI)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"id\": 2, \"name\": \"C. S. Lewis\", \"email\": \"cslewis@books.com\"}")
                 .accept(MediaType.APPLICATION_JSON))
@@ -130,8 +130,8 @@ public class MemberControllerTest {
     }
 
     @Test
-    public void shouldVerifyInvalidUpdateAuthorId() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.put(MemberController.URI)
+    public void shouldVerifyInvalidUpdateMemberId() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders.put(MemberController.URI)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"id\": 999, \"name\": \"C. S. Lewis\", \"email\": \"cslewis@books.com\"}")
                 .accept(MediaType.APPLICATION_JSON))
@@ -143,8 +143,8 @@ public class MemberControllerTest {
     }
 
     @Test
-    public void shouldVerifyInvalidPropertyNameWhenUpdateAuthor() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.put(MemberController.URI)
+    public void shouldVerifyInvalidPropertyNameWhenUpdateMember() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders.put(MemberController.URI)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"id\": 2, \"nnaammee\": \"C. S. Lewis\", \"email\": \"cslewis@books.com\"}")
                 .accept(MediaType.APPLICATION_JSON))
@@ -156,8 +156,8 @@ public class MemberControllerTest {
     }
 
     @Test
-    public void shouldRemoveAuthor() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.delete(MemberController.URI + "1")
+    public void shouldRemoveMember() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders.delete(MemberController.URI + "1")
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -167,8 +167,8 @@ public class MemberControllerTest {
     }
 
     @Test
-    public void shouldVerifyInvalidAuthorRemove() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.delete(MemberController.URI + "999")
+    public void shouldVerifyInvalidMemberRemove() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders.delete(MemberController.URI + "999")
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isNotFound())
