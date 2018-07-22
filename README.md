@@ -4,10 +4,6 @@
 
 This is a Spring Boot Maven demo app showing how to perform integrity and mock test for Sprig Boot RESTful service using JUnit and Mockito Framework.
 
-# Resources
-For more information check my blog:
-http://sundaydevblog.com/blog/post/how-to-do-integrity-and-mock-test-with-junit-and-mockito-for-spring-rest
-
 ## Pre-requisites
 
 - Java SE Development Kit 8
